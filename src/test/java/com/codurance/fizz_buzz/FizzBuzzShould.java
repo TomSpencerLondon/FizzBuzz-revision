@@ -14,7 +14,7 @@ public class FizzBuzzShould {
           "6, Fizz",
           "9, Fizz",
           "5, Buzz",
-          "10, Buzz"
+          "10, Buzz",
   })
   void play_returns_correct_result(int input, String expected) {
     // Arrange
