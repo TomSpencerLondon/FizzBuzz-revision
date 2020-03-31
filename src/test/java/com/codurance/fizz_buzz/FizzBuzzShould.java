@@ -15,6 +15,7 @@ public class FizzBuzzShould {
           "9, Fizz",
           "5, Buzz",
           "10, Buzz",
+          "15, FizzBuzz"
   })
   void play_returns_correct_result(int input, String expected) {
     // Arrange
@@ -25,5 +26,4 @@ public class FizzBuzzShould {
     // Assert
     assertEquals(expected, output);
   }
-
 }

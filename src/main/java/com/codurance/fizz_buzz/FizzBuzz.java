@@ -5,12 +5,16 @@ public class FizzBuzz {
 
   }
   public String play(int number) {
-    String result = String.valueOf(number);
+    String result = "";
 
     for (Value value : Value.values()){
       if (number % value.number == 0){
-        result = value.response;
+        result += value.response;
       }
+    }
+
+    if (result == "") {
+      result = String.valueOf(number);
     }
 
     return result;
