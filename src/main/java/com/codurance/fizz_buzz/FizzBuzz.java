@@ -1,23 +1,28 @@
 package com.codurance.fizz_buzz;
 
 public class FizzBuzz {
-  public static void main (String[] Args){
-
-  }
   public String play(int number) {
-    String result = "";
+    StringBuilder result = new StringBuilder();
 
     for (Value value : Value.values()){
       if (number % value.number == 0){
-        result += value.response;
+        result.append(value.response);
       }
     }
 
-    if (result == "") {
-      result = String.valueOf(number);
+    if (String.valueOf(number).contains("3")){
+      result.append("Fizz");
     }
 
-    return result;
+    if (String.valueOf(number).contains("5")){
+      result.append("Buzz");
+    }
+
+    if (result.length() == 0) {
+      result.append(String.valueOf(number));
+    }
+
+    return result.toString();
   }
 
   private enum Value {

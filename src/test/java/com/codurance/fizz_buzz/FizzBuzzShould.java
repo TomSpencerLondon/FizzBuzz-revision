@@ -10,12 +10,13 @@ public class FizzBuzzShould {
   @ParameterizedTest
   @CsvSource({
           "1, 1",
-          "3, Fizz",
+          "3, FizzFizz",
+          "5, BuzzBuzz",
           "6, Fizz",
           "9, Fizz",
-          "5, Buzz",
           "10, Buzz",
-          "15, FizzBuzz"
+          "60, FizzBuzz",
+          "15, FizzBuzzBuzz"
   })
   void play_returns_correct_result(int input, String expected) {
     // Arrange
