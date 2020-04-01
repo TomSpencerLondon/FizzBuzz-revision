@@ -10,12 +10,10 @@ public class FizzBuzz {
       }
     }
 
-    if (String.valueOf(number).contains("3")){
-      result.append("Fizz");
-    }
-
-    if (String.valueOf(number).contains("5")){
-      result.append("Buzz");
+    for (Value value : Value.values()){
+      if (String.valueOf(number).contains(String.valueOf(value.number))){
+        result.append(value.response);
+      }
     }
 
     if (result.length() == 0) {
