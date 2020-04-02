@@ -1,24 +1,26 @@
 package com.codurance.fizz_buzz;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class FizzBuzz {
   public String play(int number) {
     StringBuilder result = new StringBuilder();
 
-    Arrays.stream(Value.values())
-            .filter(p -> isDivisibleByNumber(number, p))
-            .forEach(p -> result.append(p.response));
-
-    Arrays.stream(Value.values())
-            .filter(p -> containsNumber(number, p))
-            .forEach(p -> result.append(p.response));
+    appendIf(p -> isDivisibleByNumber(number, p), result);
+    appendIf(p -> containsNumber(number, p), result);
 
     if (result.length() == 0) {
       result.append(String.valueOf(number));
     }
 
     return result.toString();
+  }
+
+  private void appendIf(Predicate<? super Value> predicate, StringBuilder builder){
+    Arrays.stream(Value.values())
+            .filter(predicate)
+            .forEach(p -> builder.append(p.response));
   }
 
   private boolean isDivisibleByNumber(int number, Value value) {
