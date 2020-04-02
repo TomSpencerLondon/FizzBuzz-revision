@@ -1,26 +1,32 @@
 package com.codurance.fizz_buzz;
 
+import java.util.Arrays;
+
 public class FizzBuzz {
   public String play(int number) {
     StringBuilder result = new StringBuilder();
 
-    for (Value value : Value.values()){
-      if (number % value.number == 0){
-        result.append(value.response);
-      }
-    }
+    Arrays.stream(Value.values())
+            .filter(p -> isDivisibleByNumber(number, p))
+            .forEach(p -> result.append(p.response));
 
-    for (Value value : Value.values()){
-      if (String.valueOf(number).contains(String.valueOf(value.number))){
-        result.append(value.response);
-      }
-    }
+    Arrays.stream(Value.values())
+            .filter(p -> containsNumber(number, p))
+            .forEach(p -> result.append(p.response));
 
     if (result.length() == 0) {
       result.append(String.valueOf(number));
     }
 
     return result.toString();
+  }
+
+  private boolean isDivisibleByNumber(int number, Value value) {
+    return number % value.number == 0;
+  }
+
+  private boolean containsNumber(int number, Value value) {
+    return String.valueOf(number).contains(String.valueOf(value.number));
   }
 
   private enum Value {
